@@ -1,0 +1,75 @@
+<div class="chat-page">
+  <div class="chat-window">
+    <header class="chat-header">
+      <div class="avatar">🤖</div>
+      <div>
+        <h2>Support Assistant</h2>
+        <p>Online • Usually replies instantly</p>
+      </div>
+    </header>
+
+    <div class="messages">
+      @for (m of messages(); track $index) {
+        <div class="message" [class.user]="m.role === 'user'" [class.assistant]="m.role === 'assistant'">
+          <div class="bubble">
+            <p>{{ m.content }}</p>
+
+            @if (m.sources && m.sources.length > 0) {
+              <div class="sources">
+                <p class="sources-title">📎 Sources</p>
+                @for (s of m.sources; track s.documentId) {
+                  <div class="source">
+                    <strong>{{ s.title }}</strong>
+                    <span class="similarity">{{ (s.similarity * 100).toFixed(0) }}% match</span>
+                    <p class="snippet">{{ s.snippet.slice(0, 120) }}…</p>
+                  </div>
+                }
+              </div>
+            }
+
+            @if (m.escalated) {
+              <div class="escalation">
+                ⚠️ I couldn't find a confident answer. Would you like me to create a support ticket?
+              </div>
+            }
+          </div>
+        </div>
+      }
+
+      @if (loading()) {
+        <div class="message assistant">
+          <div class="bubble typing">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      }
+
+      @if (error()) {
+        <div class="error-box">{{ error() }}</div>
+      }
+
+      <div #messagesEnd></div>
+    </div>
+
+    @if (messages().length <= 1) {
+      <div class="suggestions">
+        @for (s of suggestions; track s) {
+          <button class="chip" (click)="useSuggestion(s)">{{ s }}</button>
+        }
+      </div>
+    }
+
+    <div class="input-row">
+      <input
+        type="text"
+        [(ngModel)]="userInput"
+        placeholder="Type your question…"
+        (keyup.enter)="send()"
+        [disabled]="loading()"
+      />
+      <button class="send-btn" (click)="send()" [disabled]="loading() || !userInput.trim()">
+        ➤
+      </button>
+    </div>
+  </div>
+</div>

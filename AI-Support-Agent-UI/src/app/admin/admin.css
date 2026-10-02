@@ -1,0 +1,97 @@
+:host {
+  display: block;
+  min-height: calc(100vh - 70px);
+  background: #0f0f1a;
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+  padding: 32px 24px;
+}
+.admin-page { max-width: 1200px; margin: 0 auto; }
+
+header { text-align: center; margin-bottom: 32px; }
+header h1 { color: #fff; margin: 0 0 6px; }
+header p { color: #888; margin: 0; }
+
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+.panel {
+  background: #1a1a2e;
+  border: 1px solid #2a2a40;
+  border-radius: 12px;
+  padding: 24px;
+}
+.panel h2 { color: #00b4d8; font-size: 16px; margin: 0 0 20px; text-transform: uppercase; letter-spacing: 1px; }
+
+label {
+  display: block;
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+input, select, textarea {
+  width: 100%;
+  background: #0f0f1a;
+  border: 1px solid #2a2a40;
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: #e0e0e0;
+  font-family: inherit;
+  font-size: 14px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: #00b4d8; }
+textarea { resize: vertical; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+
+.btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #00b4d8;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+.btn:hover:not(:disabled) { background: #0096c7; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.message {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  background: rgba(74, 222, 128, 0.1);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  font-size: 14px;
+}
+.message.error {
+  background: rgba(248, 81, 73, 0.1);
+  color: #f87171;
+  border-color: rgba(248, 81, 73, 0.3);
+}
+
+.doc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #2a2a40;
+}
+.doc-row:last-child { border-bottom: none; }
+.doc-row strong { color: #fff; margin-right: 8px; }
+.type {
+  background: rgba(0, 180, 216, 0.1);
+  color: #00b4d8;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+.chunks { color: #888; font-size: 13px; }
+.empty { color: #888; font-style: italic; text-align: center; padding: 40px 0; }
