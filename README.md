@@ -15,8 +15,6 @@ A production-style customer support chatbot that combines **Retrieval-Augmented 
 
 ## 📸 Screenshots
 
-> Add your own screenshots after recording a demo. Suggested folder: `docs/screenshots/`
-
 | Chat Interface | Admin — Knowledge Base |
 |---------------|------------------------|
 | ![Chat](./docs/screenshots/chat.png) | ![Admin](./docs/screenshots/admin.png) |
